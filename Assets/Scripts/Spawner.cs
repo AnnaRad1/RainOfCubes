@@ -22,9 +22,9 @@ public class Spawner : MonoBehaviour
         
         _pool = new ObjectPool<Cube>
         (
-            createFunc: () => GetNewCube(),
-            actionOnGet: (obj) => ActionOnGet(obj),
-            actionOnRelease: (obj) => ActionOnRelease(obj),
+            createFunc: () => CreateNewCube(),
+            actionOnGet: (obj) => ActivateCube(obj),
+            actionOnRelease: (obj) => ReleaseCube(obj),
             actionOnDestroy: (obj) => DestroyCube(obj),
             collectionCheck: true,
             defaultCapacity: _poolCapacity,
@@ -37,17 +37,15 @@ public class Spawner : MonoBehaviour
         StartCoroutine(GetCubeFromPool());
     }
 
-    private Cube GetNewCube()
+    private Cube CreateNewCube()
     {
         Cube newCube = Instantiate(_prefab, _parent);
-        Color newColor = _colorRandomizer.GetRandomColor();
-        newCube.Initialize(GetSpawnPosition());
-        newCube.PlatformTouched += ChangeColor;
+        newCube.Initialize(GetSpawnPosition(), _colorRandomizer.GetRandomColor);
         newCube.CubeReleasing += ReturnCubeToPool;
         return newCube;
     }
 
-    private void ActionOnGet(Cube cube)
+    private void ActivateCube(Cube cube)
     {
         cube.Renderer.material.color = _colorRandomizer.GetBaseColor();
         cube.transform.position = GetSpawnPosition();
@@ -55,7 +53,7 @@ public class Spawner : MonoBehaviour
         cube.gameObject.SetActive(true);
     }
 
-    private void ActionOnRelease(Cube cube)
+    private void ReleaseCube(Cube cube)
     {
         cube.gameObject.SetActive(false);
     }
@@ -72,7 +70,7 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator GetCubeFromPool()
     {
-        while (true)
+        while (enabled)
         {
             _pool.Get();
             yield return _waitGetting;
@@ -81,13 +79,7 @@ public class Spawner : MonoBehaviour
 
     private void DestroyCube(Cube destroyingCube)
     {
-        destroyingCube.PlatformTouched -= ChangeColor;
         destroyingCube.CubeReleasing -= ReturnCubeToPool;
-        Destroy(destroyingCube);
-    }
-
-    private void ChangeColor(Cube touchedCube)
-    {
-        touchedCube.Renderer.material.color = _colorRandomizer.GetRandomColor();
+        Object.Destroy(destroyingCube);
     }
 }

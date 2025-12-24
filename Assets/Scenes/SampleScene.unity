@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 136563812}
   - component: {fileID: 136563811}
   - component: {fileID: 136563810}
+  - component: {fileID: 136563813}
   m_Layer: 6
   m_Name: SmallPlatform (1)
   m_TagString: Platform
@@ -259,6 +260,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136563808}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &136563813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136563808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fdb588a68fd82e43b88054779f07499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &227883169
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +402,7 @@ MonoBehaviour:
   _colorRandomizer: {fileID: 1584853671}
   _poolCapacity: 100
   _maxPoolSize: 100
-  _delay: 0.5
+  _delay: 0.4
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,6 +799,7 @@ GameObject:
   - component: {fileID: 1611124931}
   - component: {fileID: 1611124930}
   - component: {fileID: 1611124929}
+  - component: {fileID: 1611124932}
   m_Layer: 6
   m_Name: SmallPlatform
   m_TagString: Platform
@@ -880,6 +894,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611124927}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1611124932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611124927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fdb588a68fd82e43b88054779f07499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

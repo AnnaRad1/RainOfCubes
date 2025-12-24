@@ -5,12 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(Renderer))]
 public class Cube : MonoBehaviour
 {
-    [SerializeField] private string _platformTag = "Platform";
-
     private bool _hasTouched = false;
+    private Func<Color> _getRandomColor;
 
     public event Action<Cube> CubeReleasing;
-    public event Action<Cube> PlatformTouched;
 
     public Renderer Renderer { get; private set; }
 
@@ -19,9 +17,10 @@ public class Cube : MonoBehaviour
         Renderer = GetComponent<Renderer>();
     }
 
-    public void Initialize(Vector3 position)
+    public void Initialize(Vector3 position, Func<Color> getRandomColor)
     {
         transform.position = position;
+        _getRandomColor = getRandomColor;
     }
 
     public void ResetTouch()
@@ -31,15 +30,15 @@ public class Cube : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag(_platformTag) && _hasTouched == false)
+        if (collision.gameObject.TryGetComponent(out Platform _platform) && _hasTouched == false)
         {
             _hasTouched = true;
-            PlatformTouched?.Invoke(this);
-            StartCoroutine(ReportActionWithDelay());
+            Renderer.material.color = _getRandomColor();
+            StartCoroutine(StartReleaseDelay());
         }
     }
 
-    private IEnumerator ReportActionWithDelay()
+    private IEnumerator StartReleaseDelay()
     {
         yield return GetReleasingTimeDelay();
         CubeReleasing?.Invoke(this);

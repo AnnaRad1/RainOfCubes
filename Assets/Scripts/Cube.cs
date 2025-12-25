@@ -2,30 +2,30 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(Renderer))]
+[RequireComponent(typeof(Rigidbody), typeof(Renderer), typeof(ColorRandomizer))]
 public class Cube : MonoBehaviour
 {
+    private ColorRandomizer _colorRandomizer;
     private bool _hasTouched = false;
-    private Func<Color> _getRandomColor;
+    private Renderer _renderer;
 
     public event Action<Cube> CubeReleasing;
 
-    public Renderer Renderer { get; private set; }
-
     private void Awake()
     {
-        Renderer = GetComponent<Renderer>();
+        _renderer = GetComponent<Renderer>();
+        _colorRandomizer = GetComponent<ColorRandomizer>();
     }
 
-    public void Initialize(Vector3 position, Func<Color> getRandomColor)
+    public void Initialize(Vector3 position)
     {
         transform.position = position;
-        _getRandomColor = getRandomColor;
     }
 
     public void ResetTouch()
     {
         _hasTouched = false;
+        _renderer.material.color = _colorRandomizer.GetBaseColor();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -33,7 +33,7 @@ public class Cube : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out Platform _platform) && _hasTouched == false)
         {
             _hasTouched = true;
-            Renderer.material.color = _getRandomColor();
+            _renderer.material.color = _colorRandomizer.GetRandomColor();
             StartCoroutine(StartReleaseDelay());
         }
     }

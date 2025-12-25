@@ -8,8 +8,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform _parent;
     [SerializeField] private Platform _basePlatform;
     [SerializeField] private PositionCalculator _positionCalculator;
-    [SerializeField] private ColorRandomizer _colorRandomizer;
-    [SerializeField] private int _poolCapacity = 100;
+    [SerializeField] private int _poolCapacity = 50;
     [SerializeField] private int _maxPoolSize = 100;
     [SerializeField] private float _delay = 0.5f;
 
@@ -40,14 +39,13 @@ public class Spawner : MonoBehaviour
     private Cube CreateNewCube()
     {
         Cube newCube = Instantiate(_prefab, _parent);
-        newCube.Initialize(GetSpawnPosition(), _colorRandomizer.GetRandomColor);
+        newCube.Initialize(GetSpawnPosition());
         newCube.CubeReleasing += ReturnCubeToPool;
         return newCube;
     }
 
     private void ActivateCube(Cube cube)
     {
-        cube.Renderer.material.color = _colorRandomizer.GetBaseColor();
         cube.transform.position = GetSpawnPosition();
         cube.ResetTouch();
         cube.gameObject.SetActive(true);

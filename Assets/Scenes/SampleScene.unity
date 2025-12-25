@@ -399,7 +399,6 @@ MonoBehaviour:
   _parent: {fileID: 18571582}
   _basePlatform: {fileID: 1610402756}
   _positionCalculator: {fileID: 276976618}
-  _colorRandomizer: {fileID: 1584853671}
   _poolCapacity: 100
   _maxPoolSize: 100
   _delay: 0.4
@@ -620,54 +619,8 @@ Transform:
   m_Children:
   - {fileID: 300692342}
   - {fileID: 276976617}
-  - {fileID: 1584853670}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1584853669
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1584853670}
-  - component: {fileID: 1584853671}
-  m_Layer: 0
-  m_Name: ColorRandomazer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1584853670
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1584853669}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1499019219}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1584853671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1584853669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd1ec5c5022b84c45a37974ca3c97a32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _baseColor: {fileID: 2100000, guid: 93b1e80005419d24791f7c94b8f8351f, type: 2}
 --- !u!1 &1610402751
 GameObject:
   m_ObjectHideFlags: 0

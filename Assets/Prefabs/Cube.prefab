@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3687452307735794839}
   - component: {fileID: 7426514786875680538}
   - component: {fileID: 4925382733328680589}
+  - component: {fileID: -7406507987207621520}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -146,4 +147,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d3becbc2e2e494895ff0020f4a69ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _platformTag: Platform
+  _colorRandomizer: {fileID: 0}
+--- !u!114 &-7406507987207621520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142192145075540151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1ec5c5022b84c45a37974ca3c97a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minHue: 0
+  _maxHue: 1
+  _minSaturation: 0.7
+  _maxSaturation: 0.9
+  _minValue: 0.8
+  _maxValue: 1
+  _baseColor: {fileID: 2100000, guid: 93b1e80005419d24791f7c94b8f8351f, type: 2}
